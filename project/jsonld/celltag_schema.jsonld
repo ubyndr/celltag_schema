@@ -1,0 +1,684 @@
+{
+  "name": "CxG_meta-schema",
+  "description": "A meta-schema that records connections, types, provenance and evidence for the obs fields in the CZI CxG standard",
+  "title": "celltag_schema",
+  "see_also": [
+    "https://scFAIR.github.io/celltag_schema"
+  ],
+  "id": "https://w3id.org/scFAIR/celltag_schema",
+  "imports": [
+    "linkml:types"
+  ],
+  "license": "Apache Software License 2.0",
+  "prefixes": [
+    {
+      "prefix_prefix": "celltag_schema",
+      "prefix_reference": "https://w3id.org/scFAIR/celltag_schema/"
+    },
+    {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    }
+  ],
+  "default_prefix": "celltag_schema",
+  "default_range": "string",
+  "types": [
+    {
+      "name": "string",
+      "definition_uri": "https://w3id.org/linkml/String",
+      "description": "A character string",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Text"
+      ],
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "integer",
+      "definition_uri": "https://w3id.org/linkml/Integer",
+      "description": "An integer",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "boolean",
+      "definition_uri": "https://w3id.org/linkml/Boolean",
+      "description": "A binary (true or false) value",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "repr": "bool",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "float",
+      "definition_uri": "https://w3id.org/linkml/Float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#float",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "double",
+      "definition_uri": "https://w3id.org/linkml/Double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#double",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "decimal",
+      "definition_uri": "https://w3id.org/linkml/Decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "broad_mappings": [
+        "schema:Number"
+      ],
+      "base": "Decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "time",
+      "definition_uri": "https://w3id.org/linkml/Time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Time"
+      ],
+      "base": "XSDTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#time",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date",
+      "definition_uri": "https://w3id.org/linkml/Date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Date"
+      ],
+      "base": "XSDDate",
+      "uri": "http://www.w3.org/2001/XMLSchema#date",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "datetime",
+      "definition_uri": "https://w3id.org/linkml/Datetime",
+      "description": "The combination of a date and time",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
+      "base": "XSDDateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date_or_datetime",
+      "definition_uri": "https://w3id.org/linkml/DateOrDatetime",
+      "description": "Either a date or a datetime",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "https://w3id.org/linkml/DateOrDatetime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uriorcurie",
+      "definition_uri": "https://w3id.org/linkml/Uriorcurie",
+      "description": "a URI or a CURIE",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "curie",
+      "definition_uri": "https://w3id.org/linkml/Curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Curie",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uri",
+      "definition_uri": "https://w3id.org/linkml/Uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:URL"
+      ],
+      "base": "URI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ncname",
+      "definition_uri": "https://w3id.org/linkml/Ncname",
+      "description": "Prefix part of CURIE",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NCName",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "objectidentifier",
+      "definition_uri": "https://w3id.org/linkml/Objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "comments": [
+        "Used for inheritence and type checking"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "ElementIdentifier",
+      "uri": "http://www.w3.org/ns/shex#iri",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "nodeidentifier",
+      "definition_uri": "https://w3id.org/linkml/Nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NodeIdentifier",
+      "uri": "http://www.w3.org/ns/shex#nonLiteral",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    }
+  ],
+  "enums": [
+    {
+      "name": "RelationEnum",
+      "definition_uri": "https://w3id.org/scFAIR/celltag_schema/RelationEnum",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "permissible_values": [
+        {
+          "text": "broader_than"
+        }
+      ]
+    },
+    {
+      "name": "FieldTypeEnum",
+      "definition_uri": "https://w3id.org/scFAIR/celltag_schema/FieldTypeEnum",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "permissible_values": [
+        {
+          "text": "cell_type_ontology_label"
+        },
+        {
+          "text": "cell_type_ontology_id"
+        },
+        {
+          "text": "free_text_cell_type_name"
+        }
+      ]
+    },
+    {
+      "name": "FieldScopeEnum",
+      "definition_uri": "https://w3id.org/scFAIR/celltag_schema/FieldScopeEnum",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "permissible_values": [
+        {
+          "text": "exact"
+        },
+        {
+          "text": "broad"
+        }
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "name": "container__meta",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/meta",
+      "multivalued": true,
+      "alias": "meta",
+      "owner": "Container",
+      "domain_of": [
+        "Container"
+      ],
+      "range": "CxGMetaSchema",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cxGMetaSchema__field_name",
+      "description": "The name (key) of an obs field associated with a cell.",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/field_name",
+      "alias": "field_name",
+      "owner": "CxGMetaSchema",
+      "domain_of": [
+        "CxGMetaSchema"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cxGMetaSchema__field_type",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/field_type",
+      "alias": "field_type",
+      "owner": "CxGMetaSchema",
+      "domain_of": [
+        "CxGMetaSchema"
+      ],
+      "range": "FieldTypeEnum",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cxGMetaSchema__field_scope",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/field_scope",
+      "alias": "field_scope",
+      "owner": "CxGMetaSchema",
+      "domain_of": [
+        "CxGMetaSchema"
+      ],
+      "range": "FieldScopeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cxGMetaSchema__field_relationship",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/field_relationship",
+      "multivalued": true,
+      "alias": "field_relationship",
+      "owner": "CxGMetaSchema",
+      "domain_of": [
+        "CxGMetaSchema"
+      ],
+      "range": "FieldRelationship",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cxGMetaSchema__manual_annotation_metadata",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/manual_annotation_metadata",
+      "alias": "manual_annotation_metadata",
+      "owner": "CxGMetaSchema",
+      "domain_of": [
+        "CxGMetaSchema"
+      ],
+      "range": "ManualAnnotationMetadata",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cxGMetaSchema__automated_cell_type_annotation_metadata",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/automated_cell_type_annotation_metadata",
+      "alias": "automated_cell_type_annotation_metadata",
+      "owner": "CxGMetaSchema",
+      "domain_of": [
+        "CxGMetaSchema"
+      ],
+      "range": "AutomatedCellTypeAnnotationMetadata",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fieldRelationship__relation",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/relation",
+      "alias": "relation",
+      "owner": "FieldRelationship",
+      "domain_of": [
+        "FieldRelationship"
+      ],
+      "range": "RelationEnum",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fieldRelationship__object",
+      "description": "The name of a field used in annotation. Object of the relationship.",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/object",
+      "alias": "object",
+      "owner": "FieldRelationship",
+      "domain_of": [
+        "FieldRelationship"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "manualAnnotationMetadata__author",
+      "description": "ORCID of annotator",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/author",
+      "alias": "author",
+      "owner": "ManualAnnotationMetadata",
+      "domain_of": [
+        "ManualAnnotationMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "manualAnnotationMetadata__supporting_publication",
+      "description": "DOI of supporting publication",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/supporting_publication",
+      "alias": "supporting_publication",
+      "owner": "ManualAnnotationMetadata",
+      "domain_of": [
+        "ManualAnnotationMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "manualAnnotationMetadata__evidence_comment",
+      "description": "Free text description of supporting evidence for annotation",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/evidence_comment",
+      "alias": "evidence_comment",
+      "owner": "ManualAnnotationMetadata",
+      "domain_of": [
+        "ManualAnnotationMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "manualAnnotationMetadata__marker_evidence",
+      "description": "A list of expressed genes that support this cell type annotation",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/marker_evidence",
+      "multivalued": true,
+      "alias": "marker_evidence",
+      "owner": "ManualAnnotationMetadata",
+      "domain_of": [
+        "ManualAnnotationMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "automatedCellTypeAnnotationMetadata__algorithm",
+      "description": "Name of algorithm",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/algorithm",
+      "alias": "algorithm",
+      "owner": "AutomatedCellTypeAnnotationMetadata",
+      "domain_of": [
+        "AutomatedCellTypeAnnotationMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "automatedCellTypeAnnotationMetadata__algorithm_reference",
+      "description": "DOI, Protocols.io?",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/algorithm_reference",
+      "alias": "algorithm_reference",
+      "owner": "AutomatedCellTypeAnnotationMetadata",
+      "domain_of": [
+        "AutomatedCellTypeAnnotationMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "automatedCellTypeAnnotationMetadata__reference_data",
+      "description": "PURL?",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slot_uri": "https://w3id.org/scFAIR/celltag_schema/reference_data",
+      "alias": "reference_data",
+      "owner": "AutomatedCellTypeAnnotationMetadata",
+      "domain_of": [
+        "AutomatedCellTypeAnnotationMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    }
+  ],
+  "classes": [
+    {
+      "name": "Container",
+      "definition_uri": "https://w3id.org/scFAIR/celltag_schema/Container",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slots": [
+        "container__meta"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "meta",
+          "multivalued": true,
+          "range": "CxGMetaSchema",
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/scFAIR/celltag_schema/Container",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CxGMetaSchema",
+      "definition_uri": "https://w3id.org/scFAIR/celltag_schema/CxGMetaSchema",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slots": [
+        "cxGMetaSchema__field_name",
+        "cxGMetaSchema__field_type",
+        "cxGMetaSchema__field_scope",
+        "cxGMetaSchema__field_relationship",
+        "cxGMetaSchema__manual_annotation_metadata",
+        "cxGMetaSchema__automated_cell_type_annotation_metadata"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "field_name",
+          "description": "The name (key) of an obs field associated with a cell.",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "field_type",
+          "range": "FieldTypeEnum",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "field_scope",
+          "range": "FieldScopeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "field_relationship",
+          "multivalued": true,
+          "range": "FieldRelationship",
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "manual_annotation_metadata",
+          "range": "ManualAnnotationMetadata",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "automated_cell_type_annotation_metadata",
+          "range": "AutomatedCellTypeAnnotationMetadata",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/scFAIR/celltag_schema/CxGMetaSchema",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "FieldRelationship",
+      "definition_uri": "https://w3id.org/scFAIR/celltag_schema/FieldRelationship",
+      "description": "Relationship between fields",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slots": [
+        "fieldRelationship__relation",
+        "fieldRelationship__object"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "relation",
+          "range": "RelationEnum",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "object",
+          "description": "The name of a field used in annotation. Object of the relationship.",
+          "required": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/scFAIR/celltag_schema/FieldRelationship",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ManualAnnotationMetadata",
+      "definition_uri": "https://w3id.org/scFAIR/celltag_schema/ManualAnnotationMetadata",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slots": [
+        "manualAnnotationMetadata__author",
+        "manualAnnotationMetadata__supporting_publication",
+        "manualAnnotationMetadata__evidence_comment",
+        "manualAnnotationMetadata__marker_evidence"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "author",
+          "description": "ORCID of annotator",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "supporting_publication",
+          "description": "DOI of supporting publication",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "evidence_comment",
+          "description": "Free text description of supporting evidence for annotation",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "marker_evidence",
+          "description": "A list of expressed genes that support this cell type annotation",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/scFAIR/celltag_schema/ManualAnnotationMetadata",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AutomatedCellTypeAnnotationMetadata",
+      "definition_uri": "https://w3id.org/scFAIR/celltag_schema/AutomatedCellTypeAnnotationMetadata",
+      "from_schema": "https://w3id.org/scFAIR/celltag_schema",
+      "slots": [
+        "automatedCellTypeAnnotationMetadata__algorithm",
+        "automatedCellTypeAnnotationMetadata__algorithm_reference",
+        "automatedCellTypeAnnotationMetadata__reference_data"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "algorithm",
+          "description": "Name of algorithm",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "algorithm_reference",
+          "description": "DOI, Protocols.io?",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "reference_data",
+          "description": "PURL?",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/scFAIR/celltag_schema/AutomatedCellTypeAnnotationMetadata",
+      "@type": "ClassDefinition"
+    }
+  ],
+  "metamodel_version": "1.7.0",
+  "source_file": "celltag_schema.yaml",
+  "source_file_date": "2023-05-22T16:24:32",
+  "source_file_size": 2386,
+  "generation_date": "2023-05-23T11:24:22",
+  "@type": "SchemaDefinition",
+  "@context": [
+    "project/jsonld/celltag_schema.context.jsonld",
+    "https://w3id.org/linkml/types.context.jsonld",
+    {
+      "@base": "https://w3id.org/scFAIR/celltag_schema/"
+    }
+  ]
+}

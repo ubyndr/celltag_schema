@@ -1,0 +1,25 @@
+---
+site_name: "celltag_schema"
+theme:
+  name: readthedocs
+  # palette:
+  #  scheme: slate
+  #  primary: cyan
+  features:
+    - content.tabs.link
+plugins:
+  - search
+  - mermaid2
+nav:
+  # - Home: home.md
+  - Index: index.md
+  - About: about.md
+site_url: https://scFAIR.github.io/celltag_schema
+repo_url: https://github.com/scFAIR/celltag_schema
+
+# Uncomment this block to enable use of Google Analytics.
+# Replace the property value with your own ID.
+# extra:
+#   analytics:
+#     provider: google
+#     property: G-XXXXXXXXXX

@@ -1,0 +1,89 @@
+---
+id: https://w3id.org/scFAIR/celltag_schema
+name: CxG_meta-schema
+title: celltag_schema
+description: |-
+  A meta-schema that records connections, types, provenance and evidence for the obs fields in the CZI CxG standard
+license: Apache Software License 2.0
+see_also:
+  - https://scFAIR.github.io/celltag_schema
+
+prefixes:
+  celltag_schema: https://w3id.org/scFAIR/celltag_schema/
+  linkml: https://w3id.org/linkml/
+default_prefix: celltag_schema
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+  RelationEnum:
+    permissible_values:
+      broader_than:
+  FieldTypeEnum:
+    permissible_values:
+      cell_type_ontology_label:
+      cell_type_ontology_id:
+      free_text_cell_type_name:
+  FieldScopeEnum:
+    permissible_values:
+      exact:
+      broad:
+
+classes:
+  Container:
+    attributes:
+      meta:
+        multivalued: true
+        inlined_as_list: true
+        range: CxGMetaSchema
+  CxGMetaSchema:
+    attributes:
+      field_name:
+        description: The name (key) of an obs field associated with a cell.
+        required: true
+      field_type:
+        range: FieldTypeEnum
+        required: true
+      field_scope:
+        range: FieldScopeEnum
+      field_relationship:
+        range: FieldRelationship
+        inlined_as_list: true
+        multivalued: true
+      manual_annotation_metadata:
+        range: ManualAnnotationMetadata
+      automated_cell_type_annotation_metadata:
+        range: AutomatedCellTypeAnnotationMetadata
+
+  FieldRelationship:
+    description: Relationship between fields
+    attributes:
+      relation:
+        range: RelationEnum
+        required: true
+      object:
+        description: The name of a field used in annotation. Object of the relationship.
+        required: true
+  
+  ManualAnnotationMetadata:
+    attributes:
+      author:
+        description: ORCID of annotator
+      supporting_publication:
+        description: DOI of supporting publication
+      evidence_comment:
+        description: Free text description of supporting evidence for annotation
+      marker_evidence:
+        multivalued: true
+        description: A list of expressed genes that support this cell type annotation
+
+  AutomatedCellTypeAnnotationMetadata:
+    attributes:
+      algorithm:
+        description: Name of algorithm
+      algorithm_reference:
+        description: DOI, Protocols.io?
+      reference_data:
+        description: PURL?

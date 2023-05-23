@@ -1,0 +1,36 @@
+type AutomatedCellTypeAnnotationMetadata
+  {
+    algorithm: String
+    algorithmReference: String
+    referenceData: String
+  }
+
+type Container
+  {
+    meta: [CxGMetaSchema]
+  }
+
+type CxGMetaSchema
+  {
+    fieldName: String!
+    fieldType: FieldTypeEnum!
+    fieldScope: FieldScopeEnum
+    fieldRelationship: [FieldRelationship]
+    manualAnnotationMetadata: ManualAnnotationMetadata
+    automatedCellTypeAnnotationMetadata: AutomatedCellTypeAnnotationMetadata
+  }
+
+type FieldRelationship
+  {
+    relation: RelationEnum!
+    object: String!
+  }
+
+type ManualAnnotationMetadata
+  {
+    author: String
+    supportingPublication: String
+    evidenceComment: String
+    markerEvidence: [String]
+  }
+

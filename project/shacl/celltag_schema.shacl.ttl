@@ -1,0 +1,100 @@
+@prefix celltag_schema: <https://w3id.org/scFAIR/celltag_schema/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+celltag_schema:Container a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class celltag_schema:CxGMetaSchema ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path celltag_schema:meta ] ;
+    sh:targetClass celltag_schema:Container .
+
+celltag_schema:AutomatedCellTypeAnnotationMetadata a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "DOI, Protocols.io?" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path celltag_schema:algorithm_reference ],
+        [ sh:description "PURL?" ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path celltag_schema:reference_data ],
+        [ sh:description "Name of algorithm" ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path celltag_schema:algorithm ] ;
+    sh:targetClass celltag_schema:AutomatedCellTypeAnnotationMetadata .
+
+celltag_schema:CxGMetaSchema a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class celltag_schema:AutomatedCellTypeAnnotationMetadata ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path celltag_schema:automated_cell_type_annotation_metadata ],
+        [ sh:in ( "cell_type_ontology_label" "cell_type_ontology_id" "free_text_cell_type_name" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path celltag_schema:field_type ],
+        [ sh:class celltag_schema:ManualAnnotationMetadata ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path celltag_schema:manual_annotation_metadata ],
+        [ sh:in ( "exact" "broad" ) ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path celltag_schema:field_scope ],
+        [ sh:class celltag_schema:FieldRelationship ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path celltag_schema:field_relationship ],
+        [ sh:description "The name (key) of an obs field associated with a cell." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path celltag_schema:field_name ] ;
+    sh:targetClass celltag_schema:CxGMetaSchema .
+
+celltag_schema:FieldRelationship a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Relationship between fields" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( "broader_than" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path celltag_schema:relation ],
+        [ sh:description "The name of a field used in annotation. Object of the relationship." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path celltag_schema:object ] ;
+    sh:targetClass celltag_schema:FieldRelationship .
+
+celltag_schema:ManualAnnotationMetadata a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "DOI of supporting publication" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path celltag_schema:supporting_publication ],
+        [ sh:description "ORCID of annotator" ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path celltag_schema:author ],
+        [ sh:description "Free text description of supporting evidence for annotation" ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path celltag_schema:evidence_comment ],
+        [ sh:description "A list of expressed genes that support this cell type annotation" ;
+            sh:order 3 ;
+            sh:path celltag_schema:marker_evidence ] ;
+    sh:targetClass celltag_schema:ManualAnnotationMetadata .
+

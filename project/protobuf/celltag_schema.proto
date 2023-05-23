@@ -1,0 +1,32 @@
+message AutomatedCellTypeAnnotationMetadata
+ {
+  string algorithm = 0
+  string algorithmReference = 0
+  string referenceData = 0
+ }
+message Container
+ {
+ repeated  cxGMetaSchema meta = 0
+ }
+message CxGMetaSchema
+ {
+  string fieldName = 0
+  fieldTypeEnum fieldType = 0
+  fieldScopeEnum fieldScope = 0
+ repeated  fieldRelationship fieldRelationship = 0
+  manualAnnotationMetadata manualAnnotationMetadata = 0
+  automatedCellTypeAnnotationMetadata automatedCellTypeAnnotationMetadata = 0
+ }
+// Relationship between fields
+message FieldRelationship
+ {
+  relationEnum relation = 0
+  string object = 0
+ }
+message ManualAnnotationMetadata
+ {
+  string author = 0
+  string supportingPublication = 0
+  string evidenceComment = 0
+ repeated  string markerEvidence = 0
+ }
