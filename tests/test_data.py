@@ -1,22 +1,27 @@
 """Data test."""
-import os
 import glob
+import json
+import os
 import unittest
 
-from linkml_runtime.loaders import yaml_loader
+from linkml_runtime.loaders import JSONLoader
 from src.celltag_schema.datamodel.celltag_schema import CxGMetaSchema
 
 ROOT = os.path.join(os.path.dirname(__file__), '..')
 DATA_DIR = os.path.join(ROOT, "src", "data", "examples")
 
-EXAMPLE_FILES = glob.glob(os.path.join(DATA_DIR, '*.yaml'))
+EXAMPLE_FILES = glob.glob(os.path.join(DATA_DIR, '*.json'))
 
 
 class TestData(unittest.TestCase):
     """Test data and datamodel."""
 
     def test_data(self):
-        """Date test."""
+        """Validation test."""
+        loader = JSONLoader()
         for path in EXAMPLE_FILES:
-            obj = yaml_loader.load(path, target_class=CxGMetaSchema)
-            assert obj
+            with open(path, 'r') as file:
+                data = json.load(file)
+                for item in data["meta"]:
+                    obj = loader.load(item, target_class=CxGMetaSchema)
+                    assert obj
