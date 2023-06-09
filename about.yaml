@@ -1,0 +1,7 @@
+---
+name: celltag_schema
+author: Ugur Bayindir <ugur@ebi.ac.uk>
+description: A set of schemas to support FAIR annotation of cell types
+source_schema_path: src/celltag_schema/schema/celltag_schema.yaml
+google_sheet_id: 1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ
+google_sheet_tabs: personinfo enums

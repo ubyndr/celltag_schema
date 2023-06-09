@@ -1,0 +1,84 @@
+BASE <https://w3id.org/scFAIR/celltag_schema/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:time
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Curie xsd:string
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+<AutomatedCellTypeAnnotationMetadata> CLOSED {
+    (  $<AutomatedCellTypeAnnotationMetadata_tes> (  <algorithm> @linkml:String ? ;
+          <algorithm_reference> @linkml:String ? ;
+          <reference_data> @linkml:String ?
+       ) ;
+       rdf:type [ <AutomatedCellTypeAnnotationMetadata> ] ?
+    )
+}
+
+<Container> CLOSED {
+    (  $<Container_tes> <meta> @<CxGMetaSchema> * ;
+       rdf:type [ <Container> ] ?
+    )
+}
+
+<CxGMetaSchema> CLOSED {
+    (  $<CxGMetaSchema_tes> (  <field_name> @linkml:String ;
+          <field_type> @<FieldTypeEnum> ;
+          <field_scope> @<FieldScopeEnum> ? ;
+          <field_relationship> @<FieldRelationship> * ;
+          <manual_annotation_metadata> @<ManualAnnotationMetadata> ? ;
+          <automated_cell_type_annotation_metadata> @<AutomatedCellTypeAnnotationMetadata> ?
+       ) ;
+       rdf:type [ <CxGMetaSchema> ] ?
+    )
+}
+
+<FieldRelationship> CLOSED {
+    (  $<FieldRelationship_tes> (  <relation> @<RelationEnum> ;
+          <object> @linkml:String
+       ) ;
+       rdf:type [ <FieldRelationship> ] ?
+    )
+}
+
+<ManualAnnotationMetadata> CLOSED {
+    (  $<ManualAnnotationMetadata_tes> (  <author> @linkml:String ? ;
+          <supporting_publication> @linkml:String ? ;
+          <evidence_comment> @linkml:String ? ;
+          <marker_evidence> @linkml:String *
+       ) ;
+       rdf:type [ <ManualAnnotationMetadata> ] ?
+    )
+}
+
+

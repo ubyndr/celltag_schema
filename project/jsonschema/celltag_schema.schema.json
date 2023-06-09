@@ -1,0 +1,152 @@
+{
+    "$defs": {
+        "AutomatedCellTypeAnnotationMetadata": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "algorithm": {
+                    "description": "Name of algorithm",
+                    "type": "string"
+                },
+                "algorithm_reference": {
+                    "description": "DOI, Protocols.io?",
+                    "type": "string"
+                },
+                "reference_data": {
+                    "description": "PURL?",
+                    "type": "string"
+                }
+            },
+            "title": "AutomatedCellTypeAnnotationMetadata",
+            "type": "object"
+        },
+        "Container": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "meta": {
+                    "items": {
+                        "$ref": "#/$defs/CxGMetaSchema"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "Container",
+            "type": "object"
+        },
+        "CxGMetaSchema": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "automated_cell_type_annotation_metadata": {
+                    "$ref": "#/$defs/AutomatedCellTypeAnnotationMetadata"
+                },
+                "field_name": {
+                    "description": "The name (key) of an obs field associated with a cell.",
+                    "type": "string"
+                },
+                "field_relationship": {
+                    "items": {
+                        "$ref": "#/$defs/FieldRelationship"
+                    },
+                    "type": "array"
+                },
+                "field_scope": {
+                    "$ref": "#/$defs/FieldScopeEnum"
+                },
+                "field_type": {
+                    "$ref": "#/$defs/FieldTypeEnum"
+                },
+                "manual_annotation_metadata": {
+                    "$ref": "#/$defs/ManualAnnotationMetadata"
+                }
+            },
+            "required": [
+                "field_name",
+                "field_type"
+            ],
+            "title": "CxGMetaSchema",
+            "type": "object"
+        },
+        "FieldRelationship": {
+            "additionalProperties": false,
+            "description": "Relationship between fields",
+            "properties": {
+                "object": {
+                    "description": "The name of a field used in annotation. Object of the relationship.",
+                    "type": "string"
+                },
+                "relation": {
+                    "$ref": "#/$defs/RelationEnum"
+                }
+            },
+            "required": [
+                "relation",
+                "object"
+            ],
+            "title": "FieldRelationship",
+            "type": "object"
+        },
+        "FieldScopeEnum": {
+            "description": "",
+            "enum": [
+                "exact",
+                "broad"
+            ],
+            "title": "FieldScopeEnum",
+            "type": "string"
+        },
+        "FieldTypeEnum": {
+            "description": "",
+            "enum": [
+                "cell_type_ontology_label",
+                "cell_type_ontology_id",
+                "free_text_cell_type_name"
+            ],
+            "title": "FieldTypeEnum",
+            "type": "string"
+        },
+        "ManualAnnotationMetadata": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "author": {
+                    "description": "ORCID of annotator",
+                    "type": "string"
+                },
+                "evidence_comment": {
+                    "description": "Free text description of supporting evidence for annotation",
+                    "type": "string"
+                },
+                "marker_evidence": {
+                    "description": "A list of expressed genes that support this cell type annotation",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "supporting_publication": {
+                    "description": "DOI of supporting publication",
+                    "type": "string"
+                }
+            },
+            "title": "ManualAnnotationMetadata",
+            "type": "object"
+        },
+        "RelationEnum": {
+            "description": "",
+            "enum": [
+                "broader_than"
+            ],
+            "title": "RelationEnum",
+            "type": "string"
+        }
+    },
+    "$id": "https://w3id.org/scFAIR/celltag_schema",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "CxG_meta-schema",
+    "type": "object",
+    "version": null
+}
