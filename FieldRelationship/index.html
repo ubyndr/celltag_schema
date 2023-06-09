@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://scFAIR.github.io/celltag_schema/FieldRelationship/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Class: FieldRelationship - celltag_schema</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Class: FieldRelationship";
+        var mkdocs_page_input_path = "FieldRelationship.md";
+        var mkdocs_page_url = "/celltag_schema/FieldRelationship/";
+      </script>
+<script defer="" src="../js/jquery-3.6.0.min.js"></script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> celltag_schema
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Index</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">celltag_schema</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a> »</li>
+<li>Class: FieldRelationship</li>
+<li class="wy-breadcrumbs-aside">
+<a class="icon icon-github" href="https://github.com/scFAIR/celltag_schema/edit/master/docs/FieldRelationship.md"> Edit on GitHub</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="class-fieldrelationship">Class: FieldRelationship</h1>
+<p><em>Relationship between fields</em></p>
+<p>URI: <a href="https://w3id.org/scFAIR/celltag_schema/FieldRelationship">celltag_schema:FieldRelationship</a></p>
+<div class="mermaid"> classDiagram
+    class FieldRelationship
+      FieldRelationship : object
+
+      FieldRelationship : relation
+
+          FieldRelationship --|&gt; RelationEnum : relation
+
+
+</div>
+<!-- no inheritance hierarchy -->
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../relation/">relation</a></td>
+<td>1..1 <br/> <a href="../RelationEnum/">RelationEnum</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../object/">object</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>The name of a field used in annotation</td>
+<td>direct</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../CxGMetaSchema/">CxGMetaSchema</a></td>
+<td><a href="../field_relationship/">field_relationship</a></td>
+<td>range</td>
+<td><a href="./">FieldRelationship</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/scFAIR/celltag_schema</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>celltag_schema:FieldRelationship</td>
+</tr>
+<tr>
+<td>native</td>
+<td>celltag_schema:FieldRelationship</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+<h3 id="direct">Direct</h3>
+<details>
+<pre><code class="language-yaml">name: FieldRelationship
+description: Relationship between fields
+from_schema: https://w3id.org/scFAIR/celltag_schema
+rank: 1000
+attributes:
+  relation:
+    name: relation
+    from_schema: https://w3id.org/scFAIR/celltag_schema
+    rank: 1000
+    range: RelationEnum
+    required: true
+  object:
+    name: object
+    description: The name of a field used in annotation. Object of the relationship.
+    from_schema: https://w3id.org/scFAIR/celltag_schema
+    rank: 1000
+    required: true
+
+</code></pre>
+</details>
+<h3 id="induced">Induced</h3>
+<details>
+<pre><code class="language-yaml">name: FieldRelationship
+description: Relationship between fields
+from_schema: https://w3id.org/scFAIR/celltag_schema
+rank: 1000
+attributes:
+  relation:
+    name: relation
+    from_schema: https://w3id.org/scFAIR/celltag_schema
+    rank: 1000
+    alias: relation
+    owner: FieldRelationship
+    domain_of:
+    - FieldRelationship
+    range: RelationEnum
+    required: true
+  object:
+    name: object
+    description: The name of a field used in annotation. Object of the relationship.
+    from_schema: https://w3id.org/scFAIR/celltag_schema
+    rank: 1000
+    alias: object
+    owner: FieldRelationship
+    domain_of:
+    - FieldRelationship
+    range: string
+    required: true
+
+</code></pre>
+</details>
+</div>
+</div><footer>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span>
+<a class="fa fa-github" href="https://github.com/scFAIR/celltag_schema" style="color: #fcfcfc"> GitHub</a>
+</span>
+</span>
+</div>
+<script>var base_url = '..';</script>
+<script defer="" src="../js/theme_extra.js"></script>
+<script defer="" src="../js/theme.js"></script>
+<script defer="" src="../search/main.js"></script>
+<script defer="">
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</html>
