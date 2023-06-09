@@ -15,28 +15,28 @@ celltag_schema:Container a sh:NodeShape ;
 celltag_schema:AutomatedCellTypeAnnotationMetadata a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "DOI, Protocols.io?" ;
+    sh:property [ sh:description "Name of algorithm" ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path celltag_schema:algorithm ],
+        [ sh:description "DOI, Protocols.io?" ;
             sh:maxCount 1 ;
             sh:order 1 ;
             sh:path celltag_schema:algorithm_reference ],
         [ sh:description "PURL?" ;
             sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path celltag_schema:reference_data ],
-        [ sh:description "Name of algorithm" ;
-            sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path celltag_schema:algorithm ] ;
+            sh:path celltag_schema:reference_data ] ;
     sh:targetClass celltag_schema:AutomatedCellTypeAnnotationMetadata .
 
 celltag_schema:CxGMetaSchema a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class celltag_schema:AutomatedCellTypeAnnotationMetadata ;
+    sh:property [ sh:description "The name (key) of an obs field associated with a cell." ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 5 ;
-            sh:path celltag_schema:automated_cell_type_annotation_metadata ],
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path celltag_schema:field_name ],
         [ sh:in ( "cell_type_ontology_label" "cell_type_ontology_id" "free_text_cell_type_name" ) ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -47,19 +47,19 @@ celltag_schema:CxGMetaSchema a sh:NodeShape ;
             sh:nodeKind sh:BlankNode ;
             sh:order 4 ;
             sh:path celltag_schema:manual_annotation_metadata ],
-        [ sh:in ( "exact" "broad" ) ;
+        [ sh:class celltag_schema:AutomatedCellTypeAnnotationMetadata ;
             sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path celltag_schema:field_scope ],
+            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path celltag_schema:automated_cell_type_annotation_metadata ],
         [ sh:class celltag_schema:FieldRelationship ;
             sh:nodeKind sh:BlankNode ;
             sh:order 3 ;
             sh:path celltag_schema:field_relationship ],
-        [ sh:description "The name (key) of an obs field associated with a cell." ;
+        [ sh:in ( "exact" "broad" ) ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path celltag_schema:field_name ] ;
+            sh:order 2 ;
+            sh:path celltag_schema:field_scope ] ;
     sh:targetClass celltag_schema:CxGMetaSchema .
 
 celltag_schema:FieldRelationship a sh:NodeShape ;
@@ -85,16 +85,16 @@ celltag_schema:ManualAnnotationMetadata a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:order 1 ;
             sh:path celltag_schema:supporting_publication ],
-        [ sh:description "ORCID of annotator" ;
-            sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path celltag_schema:author ],
         [ sh:description "Free text description of supporting evidence for annotation" ;
             sh:maxCount 1 ;
             sh:order 2 ;
             sh:path celltag_schema:evidence_comment ],
         [ sh:description "A list of expressed genes that support this cell type annotation" ;
             sh:order 3 ;
-            sh:path celltag_schema:marker_evidence ] ;
+            sh:path celltag_schema:marker_evidence ],
+        [ sh:description "ORCID of annotator" ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path celltag_schema:author ] ;
     sh:targetClass celltag_schema:ManualAnnotationMetadata .
 

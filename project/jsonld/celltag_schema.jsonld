@@ -672,7 +672,7 @@
   "source_file": "celltag_schema.yaml",
   "source_file_date": "2023-05-22T16:24:32",
   "source_file_size": 2386,
-  "generation_date": "2023-05-23T11:24:22",
+  "generation_date": "2023-06-06T15:57:55",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/celltag_schema.context.jsonld",
