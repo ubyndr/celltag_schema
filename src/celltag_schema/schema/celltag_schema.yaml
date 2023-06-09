@@ -20,7 +20,7 @@ imports:
 enums:
   RelationEnum:
     permissible_values:
-      broader_than:
+      is_broader_than:
   FieldTypeEnum:
     permissible_values:
       cell_type_ontology_label:

@@ -192,7 +192,7 @@ class AutomatedCellTypeAnnotationMetadata(YAMLRoot):
 # Enumerations
 class RelationEnum(EnumDefinitionImpl):
 
-    broader_than = PermissibleValue(text="broader_than")
+    is_broader_than = PermissibleValue(text="is_broader_than")
 
     _defn = EnumDefinition(
         name="RelationEnum",
